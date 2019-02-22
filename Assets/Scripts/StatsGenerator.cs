@@ -14,7 +14,6 @@ public static class StatsGenerator
 {
     public static void InitialStats(Stats stats)
     {
-       
         // all characters start at level 1
         stats.level = 1;
 
@@ -22,17 +21,20 @@ public static class StatsGenerator
         stats.xp = 0;
 
         // For you todo - set the stats
-        stats.rhythm = 23422;
+        stats.rhythm = 1;
+        stats.style = 10;
         stats.luck = 5;
-        stats.style = 5;
+      
+
+        Debug.Log("Your characters rhythm stat is currently at " + stats.rhythm);
+        Debug.Log("Your characters style stat is currently at " + stats.style);
+        Debug.Log("Your characters luck stat is currently at " + stats.luck);
     }
 
     public static void AssignUnusedPoints(Stats stats, int points)
     {
-        Debug.Log("why does this run but everyting e4lse not urn i dont uansdonfadsf");
         Debug.Log(stats.rhythm);
         Debug.Log(stats.style);
         Debug.Log(stats.luck);
-        Debug.Log("Craketty crackett");
     }
 }

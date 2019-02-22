@@ -38,11 +38,10 @@ public class XPHandler : MonoBehaviour
 
         // check if the player leveled up
         // if they leveled up run this code - it makes NPCs level up
-        //   GameEvents.PlayerLevelUp(data.player.level);
+        GameEvents.PlayerLevelUp(data.player.level);
 
         // when player levels up, call these lines to add points to stats
         // int numPoints = 10;
         // StatsGenerator.AssignUnusedPoints(data.player, numPoints);
-
     }
 }

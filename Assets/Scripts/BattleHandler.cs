@@ -22,8 +22,63 @@ public static class BattleHandler
         // Your code between here
 
         Debug.Log(data.npc.rhythm);
+        Debug.Log(data.npc.style);
+        Debug.Log(data.npc.luck);
 
         Debug.Log(data.player.rhythm);
+        Debug.Log(data.player.style);
+        Debug.Log(data.player.luck);
+
+        // Variable for rhythm and style stats
+        int statsPlayer = data.player.rhythm + data.player.style;
+        int statsNpc = data.npc.rhythm + data.npc.style;
+
+        int playerRand = 4;
+        int npcRand = 4;
+
+        // Get a random variable to multiply luck by
+        float npcLuckPercentage = data.npc.luck * Random.Range(1, playerRand);
+        float playerLuckPercentage = data.player.luck * Random.Range(1, npcRand);
+
+
+
+        //Multiply stats by random luck variable multiplier and compare
+        if (statsPlayer * playerLuckPercentage >= statsNpc * npcLuckPercentage)
+        {
+            outcome = 1;
+            Debug.Log("Player wins!");
+        }
+        else
+        {
+            outcome = 0;
+            Debug.Log("Player loses!");
+        }
+
+        //Level of player cap increase
+        if (data.player.level >= 5)
+        {
+            playerRand++;
+        }
+        else if (data.player.level >= 10)
+        {
+            playerRand++;
+        }
+
+        //Level of npc cap increases
+        if (data.npc.level >= 5)
+        {
+            npcRand++;
+        }
+        else if (data.npc.level >= 10)
+        {
+            npcRand++;
+        }
+
+
+        //if (data.player.level < 5, data.player.xp <= 30)
+        //    PlayerLevelUp();        
+        
+        // else if (data.player.level < 10)
 
         // Set outcome to 0 if the player lost
         // Set outcome to 1 if the player won
