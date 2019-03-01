@@ -22,7 +22,7 @@ public static class StatsGenerator
 
         // For you todo - set the stats
         stats.rhythm = 1;
-        stats.style = 10;
+        stats.style = 10; 
         stats.luck = 5;
       
 
@@ -33,8 +33,18 @@ public static class StatsGenerator
 
     public static void AssignUnusedPoints(Stats stats, int points)
     {
-        Debug.Log(stats.rhythm);
-        Debug.Log(stats.style);
-        Debug.Log(stats.luck);
+        // When player levels up, this function will add 10 stats to rhythm, style and luck.
+        while (points >= 1)
+        {
+            stats.rhythm++;
+            stats.style++;
+            stats.luck++;
+            points--;
+        }
+
+        Debug.Log("Your characters rhythm stat is currently at " + stats.rhythm);
+        Debug.Log("Your characters style stat is currently at " + stats.style);
+        Debug.Log("Your characters luck stat is currently at " + stats.luck);
+
     }
 }

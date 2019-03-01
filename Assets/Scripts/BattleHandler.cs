@@ -20,15 +20,7 @@ public static class BattleHandler
         float outcome = 1;
 
         // Your code between here
-
-        Debug.Log(data.npc.rhythm);
-        Debug.Log(data.npc.style);
-        Debug.Log(data.npc.luck);
-
-        Debug.Log(data.player.rhythm);
-        Debug.Log(data.player.style);
-        Debug.Log(data.player.luck);
-
+   
         // Variable for rhythm and style stats
         int statsPlayer = data.player.rhythm + data.player.style;
         int statsNpc = data.npc.rhythm + data.npc.style;
@@ -39,8 +31,6 @@ public static class BattleHandler
         // Get a random variable to multiply luck by
         float npcLuckPercentage = data.npc.luck * Random.Range(1, playerRand);
         float playerLuckPercentage = data.player.luck * Random.Range(1, npcRand);
-
-
 
         //Multiply stats by random luck variable multiplier and compare
         if (statsPlayer * playerLuckPercentage >= statsNpc * npcLuckPercentage)
@@ -54,7 +44,7 @@ public static class BattleHandler
             Debug.Log("Player loses!");
         }
 
-        //Level of player cap increase
+        //Level of player cap luck multiplier increase
         if (data.player.level >= 5)
         {
             playerRand++;
@@ -64,7 +54,7 @@ public static class BattleHandler
             playerRand++;
         }
 
-        //Level of npc cap increases
+        //Level of npc cap luck multiplier increases
         if (data.npc.level >= 5)
         {
             npcRand++;
@@ -74,19 +64,26 @@ public static class BattleHandler
             npcRand++;
         }
 
+        var results = new BattleResultEventData(data.player, data.npc, outcome);
 
-        //if (data.player.level < 5, data.player.xp <= 30)
-        //    PlayerLevelUp();        
-        
-        // else if (data.player.level < 10)
+        GameEvents.FinishedBattle(results);
+
+
+        //-------------------------------------------------------
+        /*
+        Debug.Log(data.npc.rhythm);
+        Debug.Log(data.npc.style);
+        Debug.Log(data.npc.luck);
+
+        Debug.Log(data.player.rhythm);
+        Debug.Log(data.player.style);
+        Debug.Log(data.player.luck);
+        */
 
         // Set outcome to 0 if the player lost
         // Set outcome to 1 if the player won
 
         // and here
-
-        var results = new BattleResultEventData(data.player, data.npc, outcome);
-
-        GameEvents.FinishedBattle(results);
+        //--------------------------------------------------------
     }
 }
